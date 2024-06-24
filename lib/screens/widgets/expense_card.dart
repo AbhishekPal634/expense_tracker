@@ -9,13 +9,13 @@ class ExpenseCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      color: Colors.white,
+      color: Theme.of(context).colorScheme.surface,
       elevation: 0,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(25),
+      ),
       child: Padding(
-        padding: const EdgeInsets.symmetric(
-          horizontal: 10,
-          vertical: 10,
-        ),
+        padding: const EdgeInsets.fromLTRB(15, 10, 20, 10),
         // child: Text(expense.title),
         child: Row(
           children: [
@@ -24,7 +24,8 @@ class ExpenseCard extends StatelessWidget {
               height: 70,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(30),
-                color: const Color.fromARGB(255, 247, 244, 247),
+                // color: const Color.fromARGB(255, 247, 244, 247),
+                color: Theme.of(context).colorScheme.primary,
               ),
               child: Center(
                 child: SizedBox(
@@ -37,17 +38,38 @@ class ExpenseCard extends StatelessWidget {
               width: 20,
             ),
             Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(expense.title),
-                const Text('category here'),
+                Text(
+                  expense.title,
+                  style: const TextStyle(
+                      fontSize: 18, fontWeight: FontWeight.w500),
+                ),
+                const SizedBox(height: 6),
+                Text(
+                  expense.category.name.toUpperCase(),
+                  style: const TextStyle(
+                    fontSize: 12,
+                  ),
+                ),
               ],
             ),
             const Spacer(),
             Column(
+              crossAxisAlignment: CrossAxisAlignment.end,
               children: [
-                Text('₹${expense.amount.toStringAsFixed(2)}'),
-                const SizedBox(height: 15),
-                Text(expense.formattedDate),
+                Text(
+                  '₹${expense.amount.toStringAsFixed(2)}',
+                  style: const TextStyle(
+                      fontSize: 18, fontWeight: FontWeight.w500),
+                ),
+                const SizedBox(height: 6),
+                Text(
+                  expense.formattedDate,
+                  style: const TextStyle(
+                    fontSize: 12,
+                  ),
+                ),
               ],
             ),
           ],

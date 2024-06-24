@@ -43,7 +43,7 @@ class _HomePageState extends State<HomePage> {
 
   void _openAddExpenseOverlay() {
     showModalBottomSheet(
-      backgroundColor: Colors.white,
+      backgroundColor: Theme.of(context).colorScheme.primary,
       isScrollControlled: true,
       context: context,
       builder: (ctx) => FractionallySizedBox(
@@ -54,6 +54,8 @@ class _HomePageState extends State<HomePage> {
       ),
     );
   }
+
+  final String userName = 'Abhishek';
 
   @override
   Widget build(BuildContext context) {
@@ -69,9 +71,28 @@ class _HomePageState extends State<HomePage> {
     }
 
     return Scaffold(
+      backgroundColor: Theme.of(context).colorScheme.surface,
       appBar: AppBar(
-        title: const Text('MoneyMap'),
+        title: Text.rich(
+          TextSpan(
+            children: [
+              const TextSpan(
+                text: 'Hello,\n',
+                style: TextStyle(
+                  fontWeight: FontWeight.w400, 
+                ),
+              ),
+              TextSpan(
+                text: userName,
+                style: const TextStyle(
+                  fontWeight: FontWeight.w700, 
+                ),
+              ),
+            ],
+          ),
+        ),
         toolbarHeight: 110,
+        backgroundColor: Theme.of(context).colorScheme.surface,
         actions: [
           Padding(
             padding: const EdgeInsets.fromLTRB(0, 0, 20, 0),
@@ -93,11 +114,14 @@ class _HomePageState extends State<HomePage> {
         child: Column(
           children: [
             // const Text('Chart'),
-            Container(
-              height: 230,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(40),
-                color: const Color.fromARGB(255, 172, 150, 233),
+            Card(
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(35),
+              ),
+              elevation: 2,
+              color: Theme.of(context).colorScheme.secondary,
+              child: Container(
+                height: 230,
               ),
             ),
             const SizedBox(

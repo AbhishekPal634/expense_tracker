@@ -25,6 +25,16 @@ class _ExpenseOverlayState extends State<ExpenseOverlay> {
       initialDate: now,
       firstDate: firstDate,
       lastDate: now,
+      builder: (context, child) {
+        return Theme(
+          data: Theme.of(context).copyWith(
+            colorScheme: ColorScheme.light(
+              primary: Theme.of(context).colorScheme.secondary, 
+            ),
+          ),
+          child: child!,
+        );
+      }
     );
     setState(() {
       _selectedDate = pickedDate;
@@ -134,9 +144,6 @@ class _ExpenseOverlayState extends State<ExpenseOverlay> {
                   preText: '₹ ',
                 ),
               ),
-              const SizedBox(
-                width: 20,
-              ),
               Expanded(
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.end,
@@ -144,7 +151,7 @@ class _ExpenseOverlayState extends State<ExpenseOverlay> {
                   children: [
                     Text(
                       _selectedDate == null
-                          ? 'No date selected'
+                          ? 'Select date'
                           : formatter.format(_selectedDate!),
                     ),
                     IconButton(
@@ -168,14 +175,13 @@ class _ExpenseOverlayState extends State<ExpenseOverlay> {
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(20),
                       borderSide: const BorderSide(
-                        color: Colors.black,
                         width: 1,
                       ),
                     ),
                     focusedBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(20),
-                      borderSide: const BorderSide(
-                        color: Colors.black,
+                      borderSide: BorderSide(
+                        color: Theme.of(context).colorScheme.secondary,
                         width: 1,
                       ),
                     ),
@@ -213,13 +219,13 @@ class _ExpenseOverlayState extends State<ExpenseOverlay> {
                 child: const Text('Cancel'),
               ),
               const SizedBox(
-                width: 15,
+                width: 10,
               ),
               ElevatedButton(
                 onPressed: () {
                   _submitExpenseData();
                 },
-                child: const Text('Save Expense'),
+                child: const Text('Save'),
               ),
             ],
           ),
