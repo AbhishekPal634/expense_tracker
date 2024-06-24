@@ -11,25 +11,34 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  final List<Expense> _registeredExpense = [
-    Expense(
-      title: 'Flutter Course',
-      amount: 649,
-      category: Category.work,
-      date: DateTime.now(),
-    ),
-    Expense(
-      title: 'Movie',
-      amount: 149,
-      category: Category.leisure,
-      date: DateTime.now(),
-    ),
-  ];
+  final List<Expense> _registeredExpense = [];
 
   void _addExpense(Expense expense) {
     setState(() {
       _registeredExpense.add(expense);
     });
+  }
+
+  void _removeExpense(Expense expense) {
+    final expenseIndex = _registeredExpense.indexOf(expense);
+    setState(() {
+      _registeredExpense.remove(expense);
+    });
+    ScaffoldMessenger.of(context).clearSnackBars();
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        duration: const Duration(seconds: 3),
+        content: const Text('Expense deleted'),
+        action: SnackBarAction(
+          label: 'Undo',
+          onPressed: () {
+            setState(() {
+              _registeredExpense.insert(expenseIndex, expense);
+            });
+          },
+        ),
+      ),
+    );
   }
 
   void _openAddExpenseOverlay() {
@@ -38,7 +47,7 @@ class _HomePageState extends State<HomePage> {
       isScrollControlled: true,
       context: context,
       builder: (ctx) => FractionallySizedBox(
-        heightFactor: 0.85,
+        heightFactor: 0.8,
         child: ExpenseOverlay(
           onAddExpense: _addExpense,
         ),
@@ -48,21 +57,39 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+    Widget mainContent = const Center(
+      child: Text('No expense found. Start adding some!'),
+    );
+
+    if (_registeredExpense.isNotEmpty) {
+      mainContent = ExpenseList(
+        addExpenses: _registeredExpense,
+        removeExpenses: _removeExpense,
+      );
+    }
+
     return Scaffold(
-      backgroundColor: Colors.white,
       appBar: AppBar(
         title: const Text('MoneyMap'),
-        backgroundColor: Colors.white,
-        toolbarHeight: 120,
+        toolbarHeight: 110,
         actions: [
-          IconButton(
-            onPressed: _openAddExpenseOverlay,
-            icon: const Icon(Icons.add),
+          Padding(
+            padding: const EdgeInsets.fromLTRB(0, 0, 20, 0),
+            child: OutlinedButton(
+              onPressed: _openAddExpenseOverlay,
+              style: OutlinedButton.styleFrom(
+                shape: const CircleBorder(),
+                padding: const EdgeInsets.all(10),
+                side: const BorderSide(
+                    color: Color.fromARGB(65, 158, 158, 158), width: 1.5),
+              ),
+              child: const Icon(Icons.add),
+            ),
           ),
         ],
       ),
       body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 20),
+        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
         child: Column(
           children: [
             // const Text('Chart'),
@@ -77,7 +104,7 @@ class _HomePageState extends State<HomePage> {
               height: 30,
             ),
             Expanded(
-              child: ExpenseList(expenses: _registeredExpense),
+              child: mainContent,
             ),
           ],
         ),

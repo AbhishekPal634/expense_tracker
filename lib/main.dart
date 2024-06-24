@@ -1,14 +1,12 @@
 import 'package:expense_tracker/screens/home_page.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
+
+var kCOlorScheme = ColorScheme.fromSeed(seedColor: Colors.white);
 
 void main() {
   runApp(
-    MaterialApp(
-      theme: ThemeData(
-        textTheme: GoogleFonts.poppinsTextTheme(),
-      ),
-      home: const HomePage(),
+    const MaterialApp(
+      home: HomePage(),
     ),
   );
 }

@@ -107,7 +107,7 @@ class _ExpenseOverlayState extends State<ExpenseOverlay> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.fromLTRB(30, 40, 30, 15),
+      padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 15),
       child: Column(
         children: [
           IconButton(
