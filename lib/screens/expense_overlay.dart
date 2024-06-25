@@ -21,21 +21,25 @@ class _ExpenseOverlayState extends State<ExpenseOverlay> {
     final now = DateTime.now();
     final firstDate = DateTime(now.year - 1, now.month, now.day);
     final pickedDate = await showDatePicker(
-      context: context,
-      initialDate: now,
-      firstDate: firstDate,
-      lastDate: now,
-      builder: (context, child) {
-        return Theme(
-          data: Theme.of(context).copyWith(
-            colorScheme: ColorScheme.light(
-              primary: Theme.of(context).colorScheme.secondary, 
-            ),
-          ),
-          child: child!,
-        );
-      }
+  context: context,
+  initialDate: now,
+  firstDate: firstDate,
+  lastDate: now,
+  builder: (context, child) {
+    final isDarkMode = Theme.of(context).brightness == Brightness.dark;
+    return Theme(
+      data: Theme.of(context).copyWith(
+        colorScheme: isDarkMode ? ColorScheme.dark(
+          primary: Theme.of(context).colorScheme.secondary,
+        ) : ColorScheme.light(
+          primary: Theme.of(context).colorScheme.secondary,
+        ),
+      ),
+      child: child!,
     );
+  },
+);
+
     setState(() {
       _selectedDate = pickedDate;
     });
