@@ -1,4 +1,5 @@
 import 'package:expense_tracker/screens/expense_overlay.dart';
+import 'package:expense_tracker/screens/widgets/chart/chart.dart';
 import 'package:expense_tracker/screens/widgets/expense_list.dart';
 import 'package:flutter/material.dart';
 import 'package:expense_tracker/models/expense.dart';
@@ -114,16 +115,7 @@ class _HomePageState extends State<HomePage> {
         child: Column(
           children: [
             // const Text('Chart'),
-            Card(
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(35),
-              ),
-              elevation: 2,
-              color: Theme.of(context).colorScheme.secondary,
-              child: Container(
-                height: 230,
-              ),
-            ),
+            Chart(expense: _registeredExpense),
             const SizedBox(
               height: 30,
             ),

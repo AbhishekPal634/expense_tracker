@@ -32,5 +32,6 @@ ThemeData darkTheme = ThemeData(
     surface: Color.fromARGB(255, 27, 28, 49),
     primary: Color.fromARGB(255, 40, 41, 65),
     secondary: Color.fromARGB(255, 104, 61, 239),
+    onSecondaryContainer: Color.fromARGB(255, 143, 113, 242), 
   ),
 );

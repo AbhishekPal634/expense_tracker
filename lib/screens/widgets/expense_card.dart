@@ -6,6 +6,11 @@ class ExpenseCard extends StatelessWidget {
 
   final Expense expense;
 
+  String capitalize(String text) {
+    if (text.isEmpty) return text;
+    return text[0].toUpperCase() + text.substring(1).toLowerCase();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -15,7 +20,7 @@ class ExpenseCard extends StatelessWidget {
         borderRadius: BorderRadius.circular(25),
       ),
       child: Padding(
-        padding: const EdgeInsets.fromLTRB(15, 10, 20, 10),
+        padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
         // child: Text(expense.title),
         child: Row(
           children: [
@@ -47,7 +52,7 @@ class ExpenseCard extends StatelessWidget {
                 ),
                 const SizedBox(height: 6),
                 Text(
-                  expense.category.name.toUpperCase(),
+                  capitalize(expense.category.name),
                   style: const TextStyle(
                     fontSize: 12,
                   ),

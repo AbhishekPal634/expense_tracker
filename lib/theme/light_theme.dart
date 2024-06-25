@@ -34,5 +34,6 @@ ThemeData lightTheme = ThemeData(
     surface: Colors.white,
     primary: Color.fromARGB(255, 238, 233, 252),
     secondary: Color.fromARGB(255, 104, 61, 239),
+    onSecondaryContainer: Color.fromARGB(255, 143, 113, 242), 
   ),
 );
