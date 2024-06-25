@@ -18,10 +18,10 @@ This Expense Tracker app helps users manage and track their expenses efficiently
 
 ## Screenshots
 
-<img src="https://github.com/AbhishekPal634/expense_tracker/assets/121433136/9749741a-b6f5-4e66-9aa4-2e3a9167bb78" alt="Screenshot_20240625-180442" width="30%">
-<img src="https://github.com/AbhishekPal634/expense_tracker/assets/121433136/08072da4-c827-4bd9-af2a-dd834909a9e1" alt="Screenshot_20240625-180453" width="30%">
-<img src="https://github.com/AbhishekPal634/expense_tracker/assets/121433136/000ffdb1-73d3-456c-9274-57f6ea59bedf" alt="Screenshot_20240625-180407" width="30%">
-<img src="https://github.com/AbhishekPal634/expense_tracker/assets/121433136/69b2db5f-8987-4ae3-ab51-4db77d6722df" alt="Screenshot_20240625-180352" width="30%">
+<img src="https://github.com/AbhishekPal634/expense_tracker/assets/121433136/9749741a-b6f5-4e66-9aa4-2e3a9167bb78" alt="Screenshot_20240625-180442" width="25%">
+<img src="https://github.com/AbhishekPal634/expense_tracker/assets/121433136/08072da4-c827-4bd9-af2a-dd834909a9e1" alt="Screenshot_20240625-180453" width="25%">
+<img src="https://github.com/AbhishekPal634/expense_tracker/assets/121433136/000ffdb1-73d3-456c-9274-57f6ea59bedf" alt="Screenshot_20240625-180407" width="25%">
+<img src="https://github.com/AbhishekPal634/expense_tracker/assets/121433136/69b2db5f-8987-4ae3-ab51-4db77d6722df" alt="Screenshot_20240625-180352" width="25%">
   
 ## Installation
 
