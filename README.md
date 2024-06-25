@@ -9,6 +9,7 @@ This Expense Tracker app helps users manage and track their expenses efficiently
 - Add new expenses with details
 - View total expenses
 - Categorize expenses
+- Swipe left or right to remove expenses
 - Visualize expenses in a bar graph
 - User-friendly UI
 - Supports both dark and light modes
